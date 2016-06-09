@@ -1,6 +1,6 @@
-*** vCC Virtual ECN Linux PoC Implementation
+# vCC Virtual ECN Linux PoC Implementation
 
-* Description
+### Description
 
 This is a linux proof-of-concept system for the
 Virtualized Congestion Control system proposed in
@@ -30,9 +30,14 @@ control algorithm. Note that, in this case, the guest
 congestion control is not actually ECN-unaware, but
 we simulate that for the purposes of this patch.
 
-This 
+This patch provides receive-window-throttling-based ECN
+response to an ECN-unaware guest, starting with the first
+ECN seen and staying in congestion avoidance mode thereafter.
+As such, this patch does not include connection setup, slow start,
+fast-retransmit, or timeout handling; it's focus is on steady-state
+ECN response.
 
-* Using this patch
+### Using this patch
 
 This is a patch on linux kernel version 3.19, which
 can be found by tag, release, or hash
